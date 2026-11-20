@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MPI Matematika Kelas 6A - Konsep Rasio</title>
+<style>
+:root{--blue:#1769aa;--navy:#12365a;--sky:#eaf6ff;--yellow:#ffd166;--green:#16865b;--red:#c43d4d;--ink:#18324b}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(135deg,#eaf6ff,#fff8df);color:var(--ink)}
+header{background:linear-gradient(120deg,#145b9b,#2796c7);color:white;padding:28px 18px;text-align:center}
+header h1{margin:0 0 8px;font-size:clamp(23px,4vw,34px)}header p{margin:5px}
+.wrap{max-width:950px;margin:22px auto;padding:0 14px}.card{background:white;border-radius:18px;padding:22px;margin:16px 0;box-shadow:0 8px 24px #16466b18}
+h2{color:var(--navy);margin-top:0}.pill{display:inline-block;background:#fff0bd;color:#694900;padding:6px 12px;border-radius:30px;font-weight:bold;font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}.tile{background:var(--sky);padding:15px;border-radius:13px;text-align:center}.big{font-size:30px}
+button{border:0;border-radius:12px;padding:12px 18px;font-weight:bold;cursor:pointer;background:var(--blue);color:white;font-size:15px}button:hover{filter:brightness(1.08)}button.secondary{background:#e6f1f8;color:var(--navy)}button:disabled{opacity:.45;cursor:not-allowed}
+input{width:100%;padding:12px;border:1px solid #b8ccdc;border-radius:10px;font-size:16px;margin:6px 0 14px}
+.progress{height:10px;background:#e5edf4;border-radius:20px;overflow:hidden;margin:12px 0}.bar{height:100%;width:0;background:#21a179;transition:width .2s}
+.option{display:block;width:100%;text-align:left;margin:9px 0;background:#f1f7fb;color:var(--ink);border:2px solid transparent}.option.selected{border-color:var(--blue);background:#e4f3ff}.option.correct{border-color:var(--green);background:#e8f8ef}.option.wrong{border-color:var(--red);background:#fff0f1}
+.feedback{padding:12px;border-radius:10px;margin:12px 0;background:#f1f7fb}.hidden{display:none}.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between}.muted{color:#61788d;font-size:14px}.question{font-size:19px;line-height:1.5;font-weight:bold}.stimulus{background:#fff8df;border-left:5px solid var(--yellow);padding:14px;border-radius:10px;margin:12px 0;line-height:1.5}
+footer{text-align:center;color:#61788d;padding:22px;font-size:13px}
+</style>
+</head>
+<body>
+<header>
+  <div class="pill">MEDIA PEMBELAJARAN INTERAKTIF (MPI)</div>
+  <h1>📊 MENGENAL KONSEP RASIO</h1>
+  <p>Matematika • Kelas 6A • SDN Kedaung Wetan 8</p>
+  <p>Arif Tianto | Korwil Neglasari</p>
+</header>
+<main class="wrap">
+<section class="card" id="materi">
+<h2>🎯 Tujuan Pembelajaran</h2>
+<p>Setelah belajar, murid dapat membandingkan dua kelompok benda dan menjelaskan rasio sebagai cara menyatakan perbandingan dua kuantitas.</p>
+<h2>1. Membandingkan Benda</h2>
+<p>Membandingkan berarti melihat hubungan jumlah atau ukuran dua kelompok benda. Kita dapat membandingkannya dengan menghitung banyak benda pada setiap kelompok.</p>
+<div class="grid">
+ <div class="tile"><div class="big">🍎🍎🍎</div><b>3 apel</b></div>
+ <div class="tile"><div class="big">🍌🍌</div><b>2 pisang</b></div>
+</div>
+<p>Jumlah apel dibandingkan dengan pisang adalah <b>3 banding 2</b>.</p>
+<h2>2. Pengertian Rasio</h2>
+<p><b>Rasio</b> adalah cara untuk membandingkan dua kuantitas yang sejenis atau dapat dibandingkan. Rasio 3 apel terhadap 2 pisang ditulis <b>3 : 2</b> dan dibaca “tiga banding dua”.</p>
+<div class="stimulus"><b>Ingat!</b><br>Urutan sangat penting. Rasio apel terhadap pisang = 3 : 2, sedangkan rasio pisang terhadap apel = 2 : 3.</div>
+<h2>3. Contoh dalam Kehidupan Sehari-hari</h2>
+<div class="grid">
+ <div class="tile"><div class="big">🔴🔴🔴🔴</div>4 kelereng merah</div>
+ <div class="tile"><div class="big">🔵🔵</div>2 kelereng biru</div>
+</div>
+<p>Rasio merah terhadap biru = <b>4 : 2</b>. Jika dibandingkan dalam urutan sebaliknya, biru terhadap merah = <b>2 : 4</b>.</p>
+<p class="muted">Catatan: Dalam MPI ini, fokus utama adalah mengenali jumlah benda, urutan perbandingan, bentuk penulisan, dan makna rasio.</p>
+<div class="row"><button onclick="startQuiz()">Mulai Latihan 30 Soal 🚀</button><span class="muted">Pilihan ganda • Umpan balik langsung</span></div>
+</section>
+
+<section class="card hidden" id="quiz">
+<div class="row"><b id="number">Soal 1 dari 30</b><b id="scoreLive">Benar: 0</b></div>
+<div class="progress"><div class="bar" id="bar"></div></div>
+<div class="stimulus" id="stimulus"></div>
+<div class="question" id="question"></div>
+<div id="options"></div>
+<div class="feedback hidden" id="feedback"></div>
+<div class="row"><button class="secondary" onclick="showMaterial()">Kembali ke Materi</button><button id="next" onclick="nextQuestion()" disabled>Soal Berikutnya ➜</button></div>
+</section>
+
+<section class="card hidden" id="result">
+<h2>🏆 Hasil Latihan</h2>
+<p id="resultText"></p>
+<div class="grid">
+ <div class="tile"><div class="big" id="score">0/30</div><b>Jawaban benar</b></div>
+ <div class="tile"><div class="big" id="percent">0%</div><b>Nilai</b></div>
+</div>
+<p id="message"></p>
+<button onclick="restart()">Ulangi Latihan</button>
+<button class="secondary" onclick="showMaterial()">Pelajari Materi Lagi</button>
+</section>
+</main>
+<footer>Belajar Matematika dengan menyenangkan • SDN Kedaung Wetan 8</footer>
+<script>
+const qs = [
+["Di meja terdapat 4 pensil merah dan 3 pensil biru. Berapa rasio pensil merah terhadap pensil biru?","Jumlah pensil merah 4 dan biru 3.","4 : 3","3 : 4","4 : 7","7 : 4",0,"Rasio merah terhadap biru mengikuti urutan yang ditanyakan, yaitu 4 : 3."],
+["Ada 5 buku cerita dan 2 buku pelajaran. Rasio buku pelajaran terhadap buku cerita adalah ...","Perhatikan bahwa yang ditanyakan buku pelajaran lebih dahulu.","5 : 2","2 : 5","2 : 7","7 : 2",1,"Buku pelajaran 2 dan buku cerita 5, jadi 2 : 5."],
+["Di taman ada 6 bunga mawar dan 4 bunga melati. Rasio mawar terhadap melati adalah ...","Mawar berjumlah 6, melati berjumlah 4.","6 : 4","4 : 6","6 : 10","10 : 6",0,"Mawar dibandingkan melati = 6 : 4."],
+["Rasio 3 : 7 dibaca ...","Perhatikan tanda titik dua (:).","Tiga tambah tujuh","Tujuh dibagi tiga","Tiga banding tujuh","Tujuh banding tiga",2,"Rasio 3 : 7 dibaca tiga banding tujuh."],
+["Di keranjang ada 8 jeruk dan 5 apel. Rasio apel terhadap jeruk adalah ...","Apel 5, jeruk 8.","8 : 5","5 : 8","5 : 13","13 : 5",1,"Urutannya apel lalu jeruk, yaitu 5 : 8."],
+["Ada 2 bola hijau dan 9 bola kuning. Rasio bola hijau terhadap bola kuning adalah ...","Hitung setiap warna sesuai urutan.","9 : 2","2 : 9","2 : 11","11 : 2",1,"Hijau 2 dan kuning 9, sehingga 2 : 9."],
+["Di kelas terdapat 12 murid perempuan dan 10 murid laki-laki. Rasio perempuan terhadap laki-laki adalah ...","Jumlah perempuan 12 dan laki-laki 10.","10 : 12","12 : 10","12 : 22","22 : 12",1,"Perempuan dibandingkan laki-laki = 12 : 10."],
+["Rasio 4 : 6 menyatakan perbandingan ...","Angka pertama dan kedua menunjukkan dua kuantitas sesuai urutan.","enam terhadap empat","empat terhadap enam","empat ditambah enam","sepuluh terhadap empat",1,"4 : 6 berarti empat banding enam."],
+["Sebuah kotak berisi 7 krayon merah dan 7 krayon biru. Rasio merah terhadap biru adalah ...","Kedua kelompok memiliki jumlah sama.","7 : 0","0 : 7","7 : 7","14 : 7",2,"Ada 7 merah dan 7 biru, jadi 7 : 7."],
+["Ada 3 sepeda dan 5 skuter di halaman. Rasio skuter terhadap sepeda adalah ...","Skuter disebut lebih dahulu.","3 : 5","5 : 3","5 : 8","8 : 5",1,"Skuter 5 dan sepeda 3, jadi 5 : 3."],
+["Manakah penulisan rasio yang benar untuk 9 kancing putih dibanding 4 kancing hitam?","Putih disebut terlebih dahulu.","4 : 9","9 : 4","9 + 4","13 : 4",1,"Rasio putih terhadap hitam adalah 9 : 4."],
+["Di rak ada 6 piring besar dan 2 piring kecil. Rasio piring kecil terhadap piring besar adalah ...","Kecil 2 dan besar 6.","6 : 2","2 : 6","2 : 8","8 : 2",1,"Piring kecil dibanding piring besar = 2 : 6."],
+["Rasio digunakan untuk ...","Pilih fungsi rasio dalam membandingkan kuantitas.","membandingkan dua kuantitas","menentukan nama benda","mengukur suhu saja","menentukan warna benda",0,"Rasio merupakan cara menyatakan perbandingan dua kuantitas."],
+["Ada 10 ikan dalam akuarium: 4 ikan merah dan 6 ikan hitam. Rasio ikan merah terhadap seluruh ikan adalah ...","Bandingkan ikan merah dengan jumlah seluruh ikan.","4 : 6","6 : 10","4 : 10","10 : 4",2,"Jumlah seluruh ikan 10, maka merah terhadap seluruh ikan = 4 : 10."],
+["Rasio 2 : 5 dan 5 : 2 memiliki arti ...","Urutan kedua bilangan berubah.","selalu sama urutannya","perbandingannya terbalik urutannya","keduanya berarti 7","tidak dapat dibaca",1,"2 : 5 membandingkan kuantitas pertama ke kedua; 5 : 2 urutannya terbalik."],
+["Siti memiliki 4 pita kuning dan 8 pita ungu. Rasio pita kuning terhadap pita ungu adalah ...","Kuning 4, ungu 8.","8 : 4","4 : 8","4 : 12","12 : 8",1,"Rasio kuning terhadap ungu = 4 : 8."],
+["Dalam gambar terdapat 5 bintang dan 3 bulan. Rasio bulan terhadap bintang adalah ...","Bulan 3, bintang 5.","5 : 3","3 : 5","3 : 8","8 : 3",1,"Bulan dibanding bintang = 3 : 5."],
+["Rasio 6 : 1 menunjukkan ...","Bacalah kedua bilangan sesuai urutan.","satu banding enam","enam banding satu","enam ditambah satu","enam dikurangi satu",1,"6 : 1 dibaca enam banding satu."],
+["Di lapangan ada 11 bola sepak dan 4 bola basket. Rasio bola sepak terhadap bola basket adalah ...","Sepak 11, basket 4.","4 : 11","11 : 4","11 : 15","15 : 4",1,"Bola sepak terhadap basket = 11 : 4."],
+["Ada 3 gelas berisi susu dan 6 gelas berisi air. Rasio susu terhadap air adalah ...","Susu 3, air 6.","6 : 3","3 : 6","3 : 9","9 : 3",1,"Susu dibanding air = 3 : 6."],
+["Doni membandingkan 8 mobil mainan dengan 2 bus mainan. Rasio bus terhadap mobil adalah ...","Bus 2, mobil 8.","8 : 2","2 : 8","2 : 10","10 : 2",1,"Bus dibanding mobil = 2 : 8."],
+["Pernyataan yang tepat tentang rasio adalah ...","Pilih pernyataan yang menjelaskan perbandingan.","rasio hanya untuk benda berwarna","rasio membandingkan dua kuantitas","rasio selalu memakai angka 1","rasio adalah nama satuan panjang",1,"Rasio digunakan untuk membandingkan dua kuantitas."],
+["Terdapat 9 daun lebar dan 6 daun kecil. Rasio daun lebar terhadap daun kecil adalah ...","Lebar 9 dan kecil 6.","6 : 9","9 : 6","9 : 15","15 : 6",1,"Daun lebar dibanding daun kecil = 9 : 6."],
+["Dalam sebuah kelompok ada 7 anak membawa bekal dan 5 anak tidak membawa bekal. Rasio anak yang tidak membawa bekal terhadap yang membawa bekal adalah ...","Tidak membawa 5, membawa 7.","7 : 5","5 : 7","5 : 12","12 : 5",1,"Urutannya tidak membawa lalu membawa, yaitu 5 : 7."],
+["Ada 4 layang-layang merah, 4 biru, dan 2 hijau. Rasio merah terhadap biru adalah ...","Bandingkan dua warna yang ditanyakan saja.","4 : 2","4 : 4","4 : 10","10 : 4",1,"Merah 4 dan biru 4, sehingga 4 : 4."],
+["Jika 6 sendok dibandingkan dengan 3 garpu, rasio sendok terhadap garpu adalah ...","Sendok disebut lebih dahulu.","3 : 6","6 : 3","6 : 9","9 : 3",1,"Sendok 6 dan garpu 3, jadi 6 : 3."],
+["Di kandang ada 2 kelinci putih dan 5 kelinci cokelat. Rasio seluruh kelinci terhadap kelinci putih adalah ...","Jumlah seluruh kelinci = 2 + 5.","2 : 7","7 : 2","7 : 5","5 : 7",1,"Seluruh kelinci 7 dan kelinci putih 2, jadi 7 : 2."],
+["Mengapa urutan dalam rasio harus diperhatikan?","Pikirkan arti angka pertama dan angka kedua.","karena urutan menunjukkan kuantitas yang dibandingkan","agar angkanya selalu besar","karena rasio tidak boleh dibalik","supaya hasilnya menjadi penjumlahan",0,"Urutan menunjukkan kelompok pertama dibandingkan dengan kelompok kedua."],
+["Di meja ada 12 penghapus dan 3 rautan. Rasio rautan terhadap seluruh benda adalah ...","Seluruh benda = 12 + 3 = 15.","12 : 15","3 : 12","3 : 15","15 : 3",2,"Rautan 3 dan seluruh benda 15, jadi 3 : 15."],
+["Sebuah kantong berisi 5 kelereng merah dan 5 kelereng hijau. Kesimpulan yang benar adalah ...","Bandingkan jumlah kedua warna.","jumlah merah lebih banyak","jumlah hijau lebih banyak","jumlah keduanya sama dan rasionya 5 : 5","rasionya 5 : 10 untuk merah terhadap hijau",2,"Jumlah merah dan hijau sama-sama 5, sehingga rasionya 5 : 5."]
+];
+let index=0, correct=0, answered=false;
+function startQuiz(){document.getElementById('materi').classList.add('hidden');document.getElementById('result').classList.add('hidden');document.getElementById('quiz').classList.remove('hidden');index=0;correct=0;render();}
+function render(){
+ answered=false;const q=qs[index];document.getElementById('number').textContent=`Soal ${index+1} dari ${qs.length}`;
+ document.getElementById('scoreLive').textContent=`Benar: ${correct}`;
+ document.getElementById('bar').style.width=`${index/qs.length*100}%`;
+ document.getElementById('stimulus').textContent=q[1];document.getElementById('question').textContent=q[0];
+ const box=document.getElementById('options');box.innerHTML='';
+ q.slice(2,6).forEach((opt,i)=>{const b=document.createElement('button');b.className='option';b.textContent=String.fromCharCode(65+i)+'. '+opt;b.onclick=()=>choose(i,b);box.appendChild(b);});
+ document.getElementById('feedback').classList.add('hidden');document.getElementById('next').disabled=true;document.getElementById('next').textContent=index===qs.length-1?'Lihat Hasil 🏆':'Soal Berikutnya ➜';
+}
+function choose(choice,btn){
+ if(answered)return;answered=true;const q=qs[index], right=q[6];const buttons=[...document.querySelectorAll('.option')];
+ buttons.forEach((b,i)=>{b.disabled=true;if(i===right)b.classList.add('correct');if(i===choice&&choice!==right)b.classList.add('wrong');});
+ if(choice===right)correct++;
+ const fb=document.getElementById('feedback');fb.classList.remove('hidden');fb.innerHTML=(choice===right?'<b>✅ Tepat sekali!</b> ':'<b>💡 Belum tepat.</b> ')+q[7];
+ document.getElementById('scoreLive').textContent=`Benar: ${correct}`;document.getElementById('next').disabled=false;
+}
+function nextQuestion(){if(!answered)return;if(index<qs.length-1){index++;render();}else finish();}
+function finish(){document.getElementById('quiz').classList.add('hidden');document.getElementById('result').classList.remove('hidden');const pct=Math.round(correct/qs.length*100);document.getElementById('score').textContent=`${correct}/30`;document.getElementById('percent').textContent=pct+'%';document.getElementById('resultText').textContent=`Kamu telah menyelesaikan 30 soal konsep rasio.`;document.getElementById('message').textContent=pct>=86?'Hebat! Pemahamanmu tentang rasio sangat baik.':pct>=70?'Bagus! Terus berlatih agar semakin memahami rasio.':'Ayo pelajari kembali materi dan coba lagi. Kamu pasti bisa!';}
+function restart(){startQuiz();}
+function showMaterial(){document.getElementById('quiz').classList.add('hidden');document.getElementById('result').classList.add('hidden');document.getElementById('materi').classList.remove('hidden');}
+</script>
+</body></html>
